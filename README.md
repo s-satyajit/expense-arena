@@ -1,69 +1,62 @@
-# Welcome to your Lovable project
+# Expense Arena
 
-## Project info
+Welcome to **Expense Arena** - your ultimate solution for managing and tracking expenses effortlessly!
 
-**URL**: https://lovable.dev/projects/7ee24f83-4234-45fa-9501-2810786c0273
+![Expense Arena](./assets/banner.png)
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+- **User-Friendly Interface**: Intuitive and easy-to-use design.
+- **Real-Time Tracking**: Monitor your expenses in real-time.
+- **Detailed Reports**: Generate comprehensive reports to analyze your spending habits.
+- **Secure**: Your data is safe with us.
+- **Customizable**: Tailor the app to suit your needs with various settings and preferences.
 
-**Use Lovable**
+## 📸 Screenshots
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7ee24f83-4234-45fa-9501-2810786c0273) and start prompting.
+![Dashboard](./assets/screenshot1.png)
+![Reports](./assets/screenshot2.png)
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Installation
 
-**Use your preferred IDE**
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/s-satyajit/expense-arena.git
+    cd expense-arena
+    ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+3. **Run the app**:
+    ```bash
+    npm start
+    ```
 
-Follow these steps:
+## 🧑‍💻 Technologies Used
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **React**: For building the user interface.
+- **TypeScript**: For type-safe JavaScript.
+- **Tailwind CSS**: For styling.
+- **Radix UI**: For accessible UI components.
+- **React Query**: For data fetching and state management.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🤝 Contributing
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) to get started.
 
-**Edit a file directly in GitHub**
+## 📄 License
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-**Use GitHub Codespaces**
+## 🌟 Acknowledgements
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Thanks to [Radix UI](https://www.radix-ui.com/) for their amazing UI components.
+- Thanks to [Tailwind CSS](https://tailwindcss.com/) for their utility-first CSS framework.
 
-## What technologies are used for this project?
+---
 
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/7ee24f83-4234-45fa-9501-2810786c0273) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+Made with ❤️ by [Satyajit Samal](https://github.com/s-satyajit)
