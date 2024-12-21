@@ -2,92 +2,72 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-export const ExpenseVisualization = ({ data = [] }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const sceneRef = useRef<THREE.Scene | null>(null);
-  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
-  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
-  const controlsRef = useRef<OrbitControls | null>(null);
+export const ExpenseVisualization = () => {
+  const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!mountRef.current) return;
 
     // Scene setup
     const scene = new THREE.Scene();
-    sceneRef.current = scene;
-
-    // Camera setup
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      containerRef.current.clientWidth / containerRef.current.clientHeight,
-      0.1,
-      1000
-    );
-    camera.position.z = 5;
-    cameraRef.current = camera;
-
-    // Renderer setup
+    const camera = new THREE.PerspectiveCamera(75, mountRef.current.clientWidth / mountRef.current.clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
-    containerRef.current.appendChild(renderer.domElement);
-    rendererRef.current = renderer;
+    
+    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+    mountRef.current.appendChild(renderer.domElement);
 
-    // Controls setup
+    // Add controls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controlsRef.current = controls;
 
-    // Add ambient light
-    const ambientLight = new THREE.AmbientLight(0x404040);
-    scene.add(ambientLight);
-
-    // Add directional light
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(1, 1, 1);
-    scene.add(directionalLight);
-
-    // Create a sample 3D visualization
-    const geometry = new THREE.TorusGeometry(1, 0.3, 16, 100);
-    const material = new THREE.MeshPhongMaterial({
+    // Create torus
+    const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+    const material = new THREE.MeshStandardMaterial({ 
       color: 0x6366f1,
-      shininess: 60,
+      metalness: 0.7,
+      roughness: 0.2,
     });
     const torus = new THREE.Mesh(geometry, material);
     scene.add(torus);
 
-    // Animation loop
+    // Lighting
+    const pointLight = new THREE.PointLight(0xffffff);
+    pointLight.position.set(5, 5, 5);
+    const ambientLight = new THREE.AmbientLight(0xffffff);
+    scene.add(pointLight, ambientLight);
+
+    // Position camera
+    camera.position.z = 30;
+
+    // Animation
     const animate = () => {
       requestAnimationFrame(animate);
       torus.rotation.x += 0.01;
-      torus.rotation.y += 0.01;
+      torus.rotation.y += 0.005;
       controls.update();
       renderer.render(scene, camera);
     };
+
     animate();
 
     // Handle resize
     const handleResize = () => {
-      if (!containerRef.current) return;
-      const width = containerRef.current.clientWidth;
-      const height = containerRef.current.clientHeight;
-
-      if (cameraRef.current) {
-        cameraRef.current.aspect = width / height;
-        cameraRef.current.updateProjectionMatrix();
-      }
-
-      if (rendererRef.current) {
-        rendererRef.current.setSize(width, height);
-      }
+      if (!mountRef.current) return;
+      camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
     };
 
     window.addEventListener('resize', handleResize);
 
+    // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
-      containerRef.current?.removeChild(renderer.domElement);
+      mountRef.current?.removeChild(renderer.domElement);
+      geometry.dispose();
+      material.dispose();
     };
   }, []);
 
-  return <div ref={containerRef} className="w-full h-[400px] rounded-lg glass" />;
+  return <div ref={mountRef} className="w-full h-[400px]" />;
 };
