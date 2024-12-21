@@ -120,6 +120,8 @@ export default function Analytics() {
               <PieChart>
                 <Pie
                   data={pieData}
+                  dataKey="value"
+                  nameKey="name"
                   cx="50%"
                   cy="50%"
                   outerRadius={80}
