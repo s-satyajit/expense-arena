@@ -19,6 +19,7 @@ export const ExpenseVisualization = () => {
     // Add controls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
+    controls.enableZoom = false;
 
     // Create torus
     const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
