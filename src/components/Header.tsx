@@ -29,7 +29,7 @@ export const Header = () => {
             />
             <div className="absolute inset-1 rounded-full bg-primary" />
           </div>
-          <span className="text-xl font-bold">Finance App</span>
+          <span className="text-xl font-bold">Expense Management App</span>
         </Link>
         
         <nav className="flex items-center gap-1">
