@@ -2,7 +2,6 @@
 
 Welcome to **Expense Arena** - your ultimate solution for managing and tracking expenses effortlessly!
 
-![Expense Arena](./assets/banner.png)
 
 ## 🚀 Features
 
@@ -12,10 +11,6 @@ Welcome to **Expense Arena** - your ultimate solution for managing and tracking 
 - **Secure**: Your data is safe with us.
 - **Customizable**: Tailor the app to suit your needs with various settings and preferences.
 
-## 📸 Screenshots
-
-![Dashboard](./assets/screenshot1.png)
-![Reports](./assets/screenshot2.png)
 
 ## 🛠️ Installation
 

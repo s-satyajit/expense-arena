@@ -33,7 +33,7 @@ const Index = () => {
           <h1 className="text-3xl font-bold">Dashboard</h1>
           <p className="text-muted-foreground">Welcome back! Here's your expense overview.</p>
         </div>
-        <Button type="primary" onClick={showModal}>
+        <Button onClick={showModal}>
           <Plus className="mr-2 h-4 w-4" /> Add Expense
         </Button>
       </div>
@@ -118,7 +118,7 @@ const Index = () => {
             <Input type="number" />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="submit">
               Submit
             </Button>
           </Form.Item>
