@@ -2,8 +2,30 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExpenseVisualization } from "@/components/ExpenseVisualization";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import React, { useState } from 'react';
+import { Modal, Form, Input } from 'antd';
 
 const Index = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const onFinish = (values: any) => {
+    console.log('Received values of form: ', values);
+    // Add your logic to save the expense here
+    handleOk();
+  };
+
   return (
     <div className="space-y-6 animate-fade-in">
       <div className="flex justify-between items-center">
@@ -11,7 +33,7 @@ const Index = () => {
           <h1 className="text-3xl font-bold">Dashboard</h1>
           <p className="text-muted-foreground">Welcome back! Here's your expense overview.</p>
         </div>
-        <Button>
+        <Button type="primary" onClick={showModal}>
           <Plus className="mr-2 h-4 w-4" /> Add Expense
         </Button>
       </div>
@@ -74,6 +96,34 @@ const Index = () => {
           </CardContent>
         </Card>
       </div>
+
+      <Modal title="Add Expense" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <Form
+          name="expense_form"
+          onFinish={onFinish}
+          layout="vertical"
+        >
+          <Form.Item
+            name="description"
+            label="Description"
+            rules={[{ required: true, message: 'Please input the description!' }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="amount"
+            label="Amount"
+            rules={[{ required: true, message: 'Please input the amount!' }]}
+          >
+            <Input type="number" />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 };
